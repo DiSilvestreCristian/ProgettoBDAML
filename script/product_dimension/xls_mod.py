@@ -1,6 +1,6 @@
 import pandas as pd
 
-df = pd.read_excel('script/uk_categories.xls')
+df = pd.read_excel('script/product_dimension/uk_categories.xls')
 
 list_df = list(df)
 

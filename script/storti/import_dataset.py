@@ -43,24 +43,24 @@ def update_entry(filename,entry):
 
 
 def main():
-    # Import a single dataset
-    if len(sys.argv)>1:
-    	if os.path.exists(sys.argv[1]):
-    		path = sys.argv[1]
-    		mydir=path[:path.rfind("/")+1]
-    		filename=path[path.rfind("/")+1:path.rfind(".")]
-    		suffix=path[path.rfind(".")+1:]
-    		import_file(mydir,filename,suffix)
-    	else:
-    		print("Error: no such file.")
-    # Import all datasets from the DEFAULT_DIR		
-    else:
-    	all_files = [f for f in os.listdir(DEFAULT_DIR) if os.path.isfile(os.path.join(DEFAULT_DIR, f))]
-    	for myfile in all_files:
-    		myfile = myfile[:myfile.rfind(".")]
-    		import_file(DEFAULT_DIR,myfile,"csv")
+	# Import a single dataset
+	if len(sys.argv)>1:
+		if os.path.exists(sys.argv[1]):
+			path = sys.argv[1]
+			mydir=path[:path.rfind("/")+1]
+			filename=path[path.rfind("/")+1:path.rfind(".")]
+			suffix=path[path.rfind(".")+1:]
+			import_file(mydir,filename,suffix)
+		else:
+			print("Error: no such file.")
+	# Import all datasets from the DEFAULT_DIR		
+	else:
+		all_files = [f for f in os.listdir(DEFAULT_DIR) if os.path.isfile(os.path.join(DEFAULT_DIR, f))]
+		for myfile in all_files:
+			myfile = myfile[:myfile.rfind(".")]
+			import_file(DEFAULT_DIR,myfile,"csv")
 		
-    
+	
 if __name__ == "__main__":
-    main()
+	main()
 

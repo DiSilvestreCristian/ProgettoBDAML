@@ -3,14 +3,40 @@ import csv
 import random 
 import string 
 
+with open('dimensions/Geo.continent') as f:
+    continent = f.readlines()
+with open('dimensions/Geo.country') as f:
+    country = f.readlines()
+with open('dimensions/Geo.country_iso2') as f:
+    iso2 = f.readlines()
+with open('dimensions/Geo.country_iso3') as f:
+    iso3 = f.readlines()
+with open('dimensions/Geo.region') as f:
+    region = f.readlines()
+with open('dimensions/Geo.region_iso') as f:
+    region_iso = f.readlines()
+with open('dimensions/Payment.method') as f:
+    payment_method = f.readlines()
+with open('dimensions/Product.category1') as f:
+    category1 = f.readlines()
+with open('dimensions/Product.category2') as f:
+    category2 = f.readlines()
+with open('dimensions/Product.category3') as f:
+    category3 = f.readlines()
+with open('dimensions/Product.category4') as f:
+    category4 = f.readlines()
+with open('dimensions/Product.category5') as f:
+    category5 = f.readlines()
+with open('dimensions/Product.category6') as f:
+    category6 = f.readlines()
+with open('dimensions/Product.category7') as f:
+    category7 = f.readlines()
+with open('dimensions/Product.category8') as f:
+    category8 = f.readlines()
 with open('dimensions/Shipper.society') as f:
     shipper = f.readlines()
 with open('dimensions/Time.day') as f:
     time = f.readlines()
-with open('dimensions/Product.category8') as f:
-    category8 = f.readlines()
-with open('dimensions/Geo.country_iso2') as f:
-    iso2 = f.readlines()
 
 def noisy_rows(noice_percent):
     return int((NUM_ROWS/100)*noice_percent)
@@ -28,10 +54,25 @@ def get_random_string():
     return result_str
 
 NUM_ROWS = 50000
-FILENAME = 'datasets/shipperAmazon.csv'
+FILENAME = 'datasets/amazon_completo.csv'
 COLUMNS = [
+    [continent, noisy_rows(10)],
+    [country, noisy_rows(10)],
+    [iso2, noisy_rows(10)],
+    [iso3, noisy_rows(10)],
+    [region, noisy_rows(10)],
+    [region_iso, noisy_rows(10)],
+    [payment_method, noisy_rows(10)],
+    [category1, noisy_rows(10)],
+    [category2, noisy_rows(10)],
+    [category3, noisy_rows(10)],
+    [category4, noisy_rows(10)],
+    [category5, noisy_rows(10)],
+    [category6, noisy_rows(10)],
+    [category7, noisy_rows(10)],
+    [category8, noisy_rows(10)],
     [shipper, noisy_rows(10)],
-    [iso2, noisy_rows(5)]
+    [time, noisy_rows(10)]
 ]
 
 with open(FILENAME, 'w', encoding='UTF8') as f:

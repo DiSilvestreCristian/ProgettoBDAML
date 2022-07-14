@@ -16,30 +16,30 @@ THRESHOLD = 0.95
 
 def main():
 	# initialize. This is still hard-coded.
-	s1 = "datasets/bing_covid-19_data.csv"
-	s3 = "datasets/ecdc_cases.csv"
-	s5 = "datasets/covid-hospitalizations.csv"
+	s1 = "datasets/prova.csv"
+	#s3 = "datasets/ecdc_cases.csv"
+	#s5 = "datasets/covid-hospitalizations.csv"
 		
-	c1 = [1,11]
-	c3 = [0,8]
-	c5 = [1,2]
+	c1 = [0,3]
+	#c3 = [0,8]
+	#c5 = [1,2]
 
 	m1 = MinHash(num_perm=NUM_PERM)
-	m3 = MinHash(num_perm=NUM_PERM)
-	m5 = MinHash(num_perm=NUM_PERM)
+	#m3 = MinHash(num_perm=NUM_PERM)
+	#m5 = MinHash(num_perm=NUM_PERM)
 	
 	print("\treading files")		
 	df1 = pd.read_csv(s1, dtype='unicode',usecols=c1)
 	list_df1 = list(df1)
-	df3 = pd.read_csv(s3, dtype='unicode',usecols=c3)
-	list_df3 = list(df3)
-	df5 = pd.read_csv(s5, dtype='unicode',usecols=c5)
-	list_df5 = list(df5)
+	#df3 = pd.read_csv(s3, dtype='unicode',usecols=c3)
+	#list_df3 = list(df3)
+	#df5 = pd.read_csv(s5, dtype='unicode',usecols=c5)
+	#list_df5 = list(df5)
 
 	#Initialize the combined MinHashes. This needs to be done at setup time, not at query time.
 	df1_total=df1[list_df1[0]].astype(str) + " " + df1[list_df1[1]].astype(str)
-	df3_total=df3[list_df3[0]].astype(str) + " " + df3[list_df3[1]].astype(str)
-	df5_total=df5[list_df5[1]].astype(str) + " " + df5[list_df5[0]].astype(str)
+	#df3_total=df3[list_df3[0]].astype(str) + " " + df3[list_df3[1]].astype(str)
+	#df5_total=df5[list_df5[1]].astype(str) + " " + df5[list_df5[0]].astype(str)
 	
 	start = time.time()
 	
@@ -50,7 +50,7 @@ def main():
 			m1.update(i.encode('utf8'))
 	print("Time m1: "+str(time.time()-startm1)+"\n")
 	
-	startm3 = time.time()
+	'''startm3 = time.time()
 	for i in df3_total:
 			m3.update(i.encode('utf8'))	
 	print("Time m3: "+str(time.time()-startm3)+"\n")
@@ -59,7 +59,7 @@ def main():
 	startm5 = time.time()
 	for i in df5_total:
 			m5.update(i.encode('utf8'))				
-	print("Time m5: "+str(time.time()-startm5)+"\n")
+	print("Time m5: "+str(time.time()-startm5)+"\n")'''
 
 	end_hashing = time.time()
 	

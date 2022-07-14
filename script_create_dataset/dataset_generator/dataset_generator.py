@@ -1,5 +1,7 @@
 import random
 import csv
+import random 
+import string 
 
 with open('dimensions/Shipper.society') as f:
     shipper = f.readlines()
@@ -19,13 +21,17 @@ def random_row ():
         row.append(random.choice(i[0])[:-1])
     return row
 
-NUM_ROWS = 100000
-FILENAME = 'dataset/prova.csv'
+def get_random_string(): 
+    length = 8
+    letters = string.ascii_lowercase 
+    result_str = ''.join(random.choice(letters) for i in range(length)) 
+    return result_str
+
+NUM_ROWS = 50000
+FILENAME = 'datasets/shipperAmazon.csv'
 COLUMNS = [
-    [shipper, noisy_rows(20)],
-    [time, noisy_rows(30)],
-    [category8, noisy_rows(10)],
-    [iso2, noisy_rows(0)]
+    [shipper, noisy_rows(10)],
+    [iso2, noisy_rows(5)]
 ]
 
 with open(FILENAME, 'w', encoding='UTF8') as f:
@@ -34,10 +40,7 @@ with open(FILENAME, 'w', encoding='UTF8') as f:
     for i in range(NUM_ROWS):
         random_rows.append(random_row())
     for i in range(len(COLUMNS)):
-        counter = COLUMNS[i][1]
-        while counter != 0: 
-            index = random.randint(0, NUM_ROWS-1)
-            if random_rows[index][i] != "NOISE":
-                random_rows[index][i] = "NOISE"
-                counter -= 1
+        list_index = random.sample(range(NUM_ROWS), COLUMNS[i][1])
+        for j in list_index:
+            random_rows[j][i] = get_random_string()
     writer.writerows(random_rows)

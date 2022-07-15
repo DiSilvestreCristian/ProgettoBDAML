@@ -31,35 +31,35 @@ COLUMNS = [
         "noise" : noise
     },
     {
-        "dimension" : "Product.category1",
+        "dimension" : "Product.category_1",
         "noise" : noise
     },
     {
-        "dimension" : "Product.category2",
+        "dimension" : "Product.category_2",
         "noise" : noise
     },
     {
-        "dimension" : "Product.category3",
+        "dimension" : "Product.category_3",
         "noise" : noise
     },
     {
-        "dimension" : "Product.category4",
+        "dimension" : "Product.category_4",
         "noise" : noise
     },
     {
-        "dimension" : "Product.category5",
+        "dimension" : "Product.category_5",
         "noise" : noise
     },
     {
-        "dimension" : "Product.category6",
+        "dimension" : "Product.category_6",
         "noise" : noise
     },
     {
-        "dimension" : "Product.category7",
+        "dimension" : "Product.category_7",
         "noise" : noise
     },
     {
-        "dimension" : "Product.category8",
+        "dimension" : "Product.category_8",
         "noise" : noise
     },
     {

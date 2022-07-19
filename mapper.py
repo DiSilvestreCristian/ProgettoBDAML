@@ -46,6 +46,7 @@ def map_file(mydir, filename, suffix):
 		#for each column of the data source
 		durationsHashing=[]
 		durationsQuery=[]
+		to_print = []
 		for c in range(entry["num_columns"]):
 			m1 = MinHash(NUM_PERM)
 			with open(DEFAULT_COD_DIR+filename+"."+str(c),"r") as col:
@@ -59,14 +60,18 @@ def map_file(mydir, filename, suffix):
 				startTimeQuery = time.time()
 				for mapping in lshensemble.query(m1, len(values)):		
 					print("Column "+str(c)+" -> "+mapping)
+					to_print.append("Column "+str(c)+" -> "+mapping)
 				durationQuery = time.time() - startTimeQuery
 				durationsQuery.append(durationQuery)
-		sum_durations = sum(durationsHashing)
-		print("Sum durations hashing = "+str(sum_durations))
-		print("Avg durations hashing = "+str((sum_durations/len(durationsHashing))))
-		sum_durations_query = sum(durationsQuery)
-		print("Sum durations query = "+str(sum_durations_query))
-		print("Avg durations query = "+str((sum_durations_query/len(durationsQuery))))
+		
+		with open('test_output/output.' + filename, 'w') as f:
+			f.writelines("%s\n" % l for l in to_print)
+			sum_durations = sum(durationsHashing)
+			print("Sum durations hashing = "+str(sum_durations), file=f)
+			print("Avg durations hashing = "+str((sum_durations/len(durationsHashing))), file=f)
+			sum_durations_query = sum(durationsQuery)
+			print("Sum durations query = "+str(sum_durations_query), file=f)
+			print("Avg durations query = "+str((sum_durations_query/len(durationsQuery))), file=f)
 
 		
 def read_entries():

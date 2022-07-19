@@ -1,5 +1,145 @@
 {
-    "datasets/amazon_completo.csv": {
+    "datasets/amazon_completo_100righe10.csv": {
+        "num_columns": 17,
+        "num_rows": 99
+    },
+    "datasets/amazon_completo_100righe100.csv": {
+        "num_columns": 17,
+        "num_rows": 99
+    },
+    "datasets/amazon_completo_100righe1000.csv": {
+        "num_columns": 17,
+        "num_rows": 99
+    },
+    "datasets/amazon_completo_100righe3.csv": {
+        "num_columns": 17,
+        "num_rows": 99
+    },
+    "datasets/amazon_completo_100righe50.csv": {
+        "num_columns": 17,
+        "num_rows": 99
+    },
+    "datasets/amazon_completo_100righe500.csv": {
+        "num_columns": 17,
+        "num_rows": 99
+    },
+    "datasets/amazon_completo_100rows_20_10.csv": {
+        "num_columns": 17,
+        "num_rows": 99
+    },
+    "datasets/amazon_completo_100rows_20_100.csv": {
+        "num_columns": 17,
+        "num_rows": 99
+    },
+    "datasets/amazon_completo_100rows_20_1000.csv": {
+        "num_columns": 17,
+        "num_rows": 99
+    },
+    "datasets/amazon_completo_100rows_20_3.csv": {
+        "num_columns": 17,
+        "num_rows": 99
+    },
+    "datasets/amazon_completo_100rows_20_50.csv": {
+        "num_columns": 17,
+        "num_rows": 99
+    },
+    "datasets/amazon_completo_100rows_20_500.csv": {
+        "num_columns": 17,
+        "num_rows": 99
+    },
+    "datasets/amazon_completo_100rows_5_10.csv": {
+        "num_columns": 17,
+        "num_rows": 99
+    },
+    "datasets/amazon_completo_100rows_5_100.csv": {
+        "num_columns": 17,
+        "num_rows": 99
+    },
+    "datasets/amazon_completo_100rows_5_1000.csv": {
+        "num_columns": 17,
+        "num_rows": 99
+    },
+    "datasets/amazon_completo_100rows_5_3.csv": {
+        "num_columns": 17,
+        "num_rows": 99
+    },
+    "datasets/amazon_completo_100rows_5_50.csv": {
+        "num_columns": 17,
+        "num_rows": 99
+    },
+    "datasets/amazon_completo_100rows_5_500.csv": {
+        "num_columns": 17,
+        "num_rows": 99
+    },
+    "datasets/amazon_completo_10_10.csv": {
+        "num_columns": 17,
+        "num_rows": 99999
+    },
+    "datasets/amazon_completo_10_100.csv": {
+        "num_columns": 17,
+        "num_rows": 99999
+    },
+    "datasets/amazon_completo_10_1000.csv": {
+        "num_columns": 17,
+        "num_rows": 99999
+    },
+    "datasets/amazon_completo_10_3.csv": {
+        "num_columns": 17,
+        "num_rows": 99999
+    },
+    "datasets/amazon_completo_10_50.csv": {
+        "num_columns": 17,
+        "num_rows": 99999
+    },
+    "datasets/amazon_completo_10_500.csv": {
+        "num_columns": 17,
+        "num_rows": 99999
+    },
+    "datasets/amazon_completo_20_10.csv": {
+        "num_columns": 17,
+        "num_rows": 99999
+    },
+    "datasets/amazon_completo_20_100.csv": {
+        "num_columns": 17,
+        "num_rows": 99999
+    },
+    "datasets/amazon_completo_20_1000.csv": {
+        "num_columns": 17,
+        "num_rows": 99999
+    },
+    "datasets/amazon_completo_20_3.csv": {
+        "num_columns": 17,
+        "num_rows": 99999
+    },
+    "datasets/amazon_completo_20_50.csv": {
+        "num_columns": 17,
+        "num_rows": 99999
+    },
+    "datasets/amazon_completo_20_500.csv": {
+        "num_columns": 17,
+        "num_rows": 99999
+    },
+    "datasets/amazon_completo_5_10.csv": {
+        "num_columns": 17,
+        "num_rows": 99999
+    },
+    "datasets/amazon_completo_5_100.csv": {
+        "num_columns": 17,
+        "num_rows": 99999
+    },
+    "datasets/amazon_completo_5_1000.csv": {
+        "num_columns": 17,
+        "num_rows": 99999
+    },
+    "datasets/amazon_completo_5_3.csv": {
+        "num_columns": 17,
+        "num_rows": 99999
+    },
+    "datasets/amazon_completo_5_50.csv": {
+        "num_columns": 17,
+        "num_rows": 99999
+    },
+    "datasets/amazon_completo_5_500.csv": {
         "num_columns": 17,
         "num_rows": 99999
     }

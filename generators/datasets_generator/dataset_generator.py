@@ -6,6 +6,7 @@ import os
 import dataset_options as options
 
 DIMENSIONS_DIR = 'dimensions/'
+NOISE_DIR = 'generators/datasets_generator/noise/'
 
 # Define dimensions dictionary from 'dimensions/' folder
 dimensions = {}
@@ -22,7 +23,7 @@ def noisy_rows(noice_percent):
 def random_row ():
     row = []
     for i in options.COLUMNS:
-        row.append(random.choice(dimensions[i['dimension']])[:-1])
+        row.append(random.choice(dimensions[i])[:-1])
     return row
 
 def get_random_string(): 
@@ -32,7 +33,7 @@ def get_random_string():
     return result_str
 
 noise_strings = []
-with open('generators/datasets_generator/Noise.string') as f:
+with open(NOISE_DIR + 'Noise.randomity_' + str(options.noise_randomity)) as f:
     noise_strings = f.readlines()
 
 def get_pseudorandom_string():
@@ -44,7 +45,7 @@ with open(options.FILENAME, 'w', encoding='UTF8') as f:
     for i in range(options.NUM_ROWS):
         random_rows.append(random_row())
     for i in range(len(options.COLUMNS)):
-        list_index = random.sample(range(options.NUM_ROWS), noisy_rows(options.COLUMNS[i]['noise']))
+        list_index = random.sample(range(options.NUM_ROWS), noisy_rows(options.noise))
         for j in list_index:
             random_rows[j][i] = get_pseudorandom_string()
     writer.writerows(random_rows)

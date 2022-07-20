@@ -1,6 +1,0 @@
-{
-    "datasets/amazon_completo_1000000_20_1000.csv": {
-        "num_columns": 17,
-        "num_rows": 999999
-    }
-}

@@ -21,7 +21,7 @@ def import_file(dir_path,file_path,suffix):
 	for i in list_df:
 		column_values = df[i].tolist()
 		#deduplicate values ==> reduces the size of indexing structures by 90%
-		column_values = set(column_values)
+		#column_values = set(column_values)
 		column_values = list(filter(None, column_values)) # remove null values
 		#store in file
 		with open(DEFAULT_COD_DIR+file_path+"."+str(list_df.index(i)),"w") as f:

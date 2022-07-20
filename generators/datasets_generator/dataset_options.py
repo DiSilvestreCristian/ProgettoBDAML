@@ -1,6 +1,6 @@
-NUM_ROWS = 1000000
+NUM_ROWS = 100000
 noise_randomity = 1000
-noise = 20
+noise = 5
 FILENAME = 'datasets/amazon_completo_'+str(NUM_ROWS)+'_'+str(noise)+'_'+str(noise_randomity)+'.csv'
 COLUMNS = [
     "Geo.continent",

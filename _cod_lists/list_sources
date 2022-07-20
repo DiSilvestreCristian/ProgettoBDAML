@@ -2,5 +2,17 @@
     "datasets/amazon_completo_1000000_20_1000.csv": {
         "num_columns": 17,
         "num_rows": 999999
+    },
+    "datasets/amazon_completo_100000_20_1000.csv": {
+        "num_columns": 17,
+        "num_rows": 99999
+    },
+    "datasets/amazon_completo_100000_20_3.csv": {
+        "num_columns": 17,
+        "num_rows": 99999
+    },
+    "datasets/amazon_completo_100000_5_1000.csv": {
+        "num_columns": 17,
+        "num_rows": 99999
     }
 }

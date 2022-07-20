@@ -1,4 +1,4 @@
 _cod_lists/*
-    !list_sources
+!_cod_lists/list_sources
 datasets/*
 test_output/*

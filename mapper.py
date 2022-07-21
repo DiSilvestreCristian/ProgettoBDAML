@@ -66,6 +66,10 @@ def map_file(mydir, filename, suffix):
 		
 		with open('test_output/output.' + filename, 'w') as f:
 			f.writelines("%s\n" % l for l in to_print)
+			print('', file=f)
+			for i in range(len(durationsQuery)):
+				print("Query time Column " + str(i) + " = " + str(durationsQuery[i]) + "s", file=f)
+			print('', file=f)
 			sum_durations = sum(durationsHashing)
 			print("Sum durations hashing = "+str(sum_durations), file=f)
 			print("Avg durations hashing = "+str((sum_durations/len(durationsHashing))), file=f)

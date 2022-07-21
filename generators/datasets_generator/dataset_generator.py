@@ -20,8 +20,8 @@ def noisy_rows(noice_percent):
     return int((options.NUM_ROWS/100)*noice_percent)
 
 # Create a random entry in the dataset
-def random_row ():
-    row = []
+def random_row(id):
+    row = [id]
     for i in options.COLUMNS:
         row.append(random.choice(dimensions[i])[:-1])
     return row
@@ -43,8 +43,8 @@ with open(options.FILENAME, 'w', encoding='UTF8') as f:
     writer = csv.writer(f)
     random_rows = []
     for i in range(options.NUM_ROWS):
-        random_rows.append(random_row())
-    for i in range(len(options.COLUMNS)):
+        random_rows.append(random_row(id=i))
+    for i in range(1,len(options.COLUMNS)+1):
         list_index = random.sample(range(options.NUM_ROWS), noisy_rows(options.noise))
         for j in list_index:
             random_rows[j][i] = get_pseudorandom_string()

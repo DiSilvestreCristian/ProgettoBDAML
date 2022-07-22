@@ -24,6 +24,6 @@ COLUMNS = [
 ]
 
 #--CHILD--
-NUM_ROWS_CHILD = 50
-inherited_rows_percentage = 20
-CHILD_FILENAME = DEFAULT_DIR + 'child_dataset_'+str(NUM_ROWS)+'_'+str(noise)+'_'+str(noise_randomity)+'_'+str(inherited_rows_percentage)+'.csv'
+NUM_ROWS_CHILD = 100
+inherited_rows_percentage = 100
+CHILD_FILENAME = DEFAULT_DIR + 'child_dataset_'+str(NUM_ROWS)+'_'+str(NUM_ROWS_CHILD)+'_'+str(inherited_rows_percentage)+'.csv'

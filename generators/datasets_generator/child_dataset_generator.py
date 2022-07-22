@@ -2,6 +2,7 @@ import random
 import csv
 import string 
 import os
+from sys import flags
 
 import pandas as pd
 import dataset_options as options
@@ -18,15 +19,28 @@ for dimension in dimension_files:
 
 # Create a random entry in the dataset
 def random_row():
-    row = []
-    for i in options.COLUMNS:
-        row.append(random.choice(dimensions[i])[:-1])
-    return row
+    with open(options.FILENAME, 'r', encoding='UTF8') as f:
+        list = f.readlines() 
+    flag = 1
+    while flag:
+        row = ''
+        j = 0 
+        for i in options.COLUMNS:
+            row += random.choice(dimensions[i])[:-1]
+            if j == 0 :
+                row += ','
+            j += 1
+        flag = row in list
+    return row.split(',')
 
 def get_parent_row():
     with open(options.FILENAME, 'r', encoding='UTF8') as f:
         list = f.readlines()
-    return random.choice(list)[:-1].split(",")
+    row = random.choice(list)[:-1]
+    while row == '':
+        row = random.choice(list)[:-1]
+    return row.split(',')
+        
 
 with open(options.CHILD_FILENAME, 'w', encoding='UTF8') as f:
     writer = csv.writer(f)

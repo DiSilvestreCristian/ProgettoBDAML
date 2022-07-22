@@ -1,5 +1,6 @@
 _cod_lists/*
 !_cod_lists/list_sources
 datasets/*
+!datasets/
 test_output/*
 **/__pycache__

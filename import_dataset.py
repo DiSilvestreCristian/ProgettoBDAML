@@ -24,7 +24,7 @@ def import_file(dir_path,file_path,suffix):
 		column_values = set(column_values)
 		column_values = list(filter(None, column_values)) # remove null values
 		#store in file
-		with open(DEFAULT_COD_DIR+file_path+"."+str(list_df.index(i)),"w") as f:
+		with open(DEFAULT_COD_DIR+file_path+"."+str(list_df.index(i)),"w", encoding='UTF8') as f:
 			for s in column_values:
 				if isinstance(s,str) or not math.isnan(s):
 					f.write(str(s)+"\n")
@@ -34,11 +34,11 @@ def import_file(dir_path,file_path,suffix):
 
 
 def update_entry(filename,entry):
-	with open(DEFAULT_ENTRY_FILE,"r") as f:
+	with open(DEFAULT_ENTRY_FILE,"r",encoding='UTF8') as f:
 		data_decoded = json.load(f)
 	#update or save
 	data_decoded[filename]=entry
-	with open(DEFAULT_ENTRY_FILE,"w") as f:
+	with open(DEFAULT_ENTRY_FILE,"w",encoding='UTF8') as f:
 		json.dump(data_decoded,f, indent=4, sort_keys=True)
 
 
@@ -58,6 +58,7 @@ def main():
 		all_files = [f for f in os.listdir(DEFAULT_DIR) if os.path.isfile(os.path.join(DEFAULT_DIR, f))]
 		for myfile in all_files:
 			myfile = myfile[:myfile.rfind(".")]
+			if myfile == '' : continue
 			import_file(DEFAULT_DIR,myfile,"csv")
 		
 	

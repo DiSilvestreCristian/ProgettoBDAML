@@ -12,7 +12,7 @@ NOISE_DIR = 'generators/datasets_generator/noise/'
 dimensions = {}
 dimension_files = [f for f in os.listdir(DIMENSIONS_DIR) if os.path.isfile(os.path.join(DIMENSIONS_DIR, f))]
 for dimension in dimension_files:
-    with open(DIMENSIONS_DIR + dimension) as f:
+    with open(DIMENSIONS_DIR + dimension, 'r', encoding='UTF8') as f:
         dimensions[dimension] = f.readlines()
 
 # Calculate the number of noisy rows (from percentage)
@@ -26,14 +26,8 @@ def random_row(id):
         row.append(random.choice(dimensions[i])[:-1])
     return row
 
-def get_random_string(): 
-    length = 8
-    letters = string.ascii_lowercase 
-    result_str = ''.join(random.choice(letters) for i in range(length)) 
-    return result_str
-
 noise_strings = []
-with open(NOISE_DIR + 'Noise.randomity_' + str(options.noise_randomity)) as f:
+with open(NOISE_DIR + 'Noise.randomity_' + str(options.noise_randomity), 'r', encoding='UTF8') as f:
     noise_strings = f.readlines()
 
 def get_pseudorandom_string():

@@ -1,8 +1,9 @@
 import random
 import csv
-import random 
 import string 
 import os
+
+import pandas as pd
 import dataset_options as options
 
 DIMENSIONS_DIR = 'dimensions/'
@@ -15,10 +16,6 @@ for dimension in dimension_files:
     with open(DIMENSIONS_DIR + dimension, 'r', encoding='UTF8') as f:
         dimensions[dimension] = f.readlines()
 
-# Calculate the number of noisy rows (from percentage)
-def noisy_rows(noice_percent):
-    return int((options.NUM_ROWS/100)*noice_percent)
-
 # Create a random entry in the dataset
 def random_row():
     row = []
@@ -26,20 +23,17 @@ def random_row():
         row.append(random.choice(dimensions[i])[:-1])
     return row
 
-noise_strings = []
-with open(NOISE_DIR + 'Noise.randomity_' + str(options.noise_randomity), 'r', encoding='UTF8') as f:
-    noise_strings = f.readlines()
+def get_parent_row():
+    with open(options.FILENAME, 'r', encoding='UTF8') as f:
+        list = f.readlines()
+    return random.choice(list)[:-1].split(",")
 
-def get_pseudorandom_string():
-    return random.choice(noise_strings)[:-1]
-
-with open(options.FILENAME, 'w', encoding='UTF8') as f:
+with open(options.CHILD_FILENAME, 'w', encoding='UTF8') as f:
     writer = csv.writer(f)
     random_rows = []
-    for i in range(options.NUM_ROWS):
+    inherited_rows = int(options.NUM_ROWS_CHILD * options.inherited_rows_percentage/100)
+    for i in range(inherited_rows):
+        random_rows.append(get_parent_row())
+    for i in range(options.NUM_ROWS_CHILD - inherited_rows):
         random_rows.append(random_row())
-    for i in range(len(options.COLUMNS)):
-        list_index = random.sample(range(options.NUM_ROWS), noisy_rows(options.noise))
-        for j in list_index:
-            random_rows[j][i] = get_pseudorandom_string()
     writer.writerows(random_rows)

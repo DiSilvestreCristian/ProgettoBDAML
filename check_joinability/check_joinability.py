@@ -5,6 +5,7 @@ import math
 import json
 from datasketch import MinHashLSHEnsemble, MinHash
 import time
+import joinability_options as options
 
 DEFAULT_DIR = "datasets/"
 DEFAULT_DIMENSIONS_DIR="dimensions/"
@@ -12,34 +13,27 @@ DEFAULT_COD_DIR = "_cod_lists/"
 DEFAULT_ENTRY_FILE = DEFAULT_COD_DIR+"list_sources"
 NUM_PERM = 256
 NUM_PART = 32
-THRESHOLD = 0.95
 
 def main():
 	# initialize. This is still hard-coded.
-	s1 = "1.csv"
-	s3 = "2.csv"
-	s5 = "3.csv"
+	s1 = DEFAULT_DIR + options.dataset1
+	s2 = DEFAULT_DIR + options.dataset2
 		
-	c1 = [0,1]
-	c3 = [0,1]
-	c5 = [0,1]
+	c1 = options.columns1
+	c2 = options.columns2
 
 	m1 = MinHash(num_perm=NUM_PERM)
-	m3 = MinHash(num_perm=NUM_PERM)
-	m5 = MinHash(num_perm=NUM_PERM)
+	m2= MinHash(num_perm=NUM_PERM)
 	
 	print("\treading files")		
 	df1 = pd.read_csv(s1, dtype='unicode',usecols=c1)
 	list_df1 = list(df1)
-	df3 = pd.read_csv(s3, dtype='unicode',usecols=c3)
-	list_df3 = list(df3)
-	df5 = pd.read_csv(s5, dtype='unicode',usecols=c5)
-	list_df5 = list(df5)
+	df2 = pd.read_csv(s2, dtype='unicode',usecols=c2)
+	list_df2 = list(df2)
 
 	#Initialize the combined MinHashes. This needs to be done at setup time, not at query time.
 	df1_total=df1[list_df1[0]].astype(str) + " " + df1[list_df1[1]].astype(str)
-	df3_total=df3[list_df3[0]].astype(str) + " " + df3[list_df3[1]].astype(str)
-	df5_total=df5[list_df5[1]].astype(str) + " " + df5[list_df5[0]].astype(str)
+	df2_total=df2[list_df2[0]].astype(str) + " " + df2[list_df2[1]].astype(str)
 	
 	start = time.time()
 	
@@ -50,21 +44,14 @@ def main():
 			m1.update(i.encode('utf8'))
 	print("Time m1: "+str(time.time()-startm1)+"\n")
 	
-	startm3 = time.time()
-	for i in df3_total:
-			m3.update(i.encode('utf8'))	
-	print("Time m3: "+str(time.time()-startm3)+"\n")
-	
-	
-	startm5 = time.time()
-	for i in df5_total:
-			m5.update(i.encode('utf8'))				
-	print("Time m5: "+str(time.time()-startm5)+"\n")
+	startm2 = time.time()
+	for i in df2_total:
+			m2.update(i.encode('utf8'))				
+	print("Time m2: "+str(time.time()-startm2)+"\n")
 
 	end_hashing = time.time()
 	
 	print("\tchecking joinability")
-	#Here we check s5 with s1
 	stop = False
 	first = 0.0
 	last = 1.0
@@ -75,10 +62,9 @@ def main():
 		q = (first+last)/2
 		lshensemble = MinHashLSHEnsemble(threshold=q, num_perm=NUM_PERM, num_part=NUM_PART)
 		lshensemble.index([("s1",m1,len(df1_total))])
-		#lshensemble.index([("s5",m5,len(df5_total))])
+		#lshensemble.index([("s2",m2,len(df2_total))])
 		print("First = "+str(first)+" Last: "+str(last)+"\n")
-		# Check if source 1 is joinable to source 5. Then it needs to be done the other way round, between s5 and s1. The highest of the two final values is kept.
-		for k in lshensemble.query(m5,len(df5_total)):
+		for k in lshensemble.query(m2,len(df2_total)):
 			print(k)
 			print("Result:\n\tsources joinable with containment > "+str(q))
 			found = True

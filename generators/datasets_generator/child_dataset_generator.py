@@ -10,20 +10,6 @@ import dataset_options as options
 DIMENSIONS_DIR = 'dimensions/'
 NOISE_DIR = 'generators/datasets_generator/noise/'
 
-# Define dimensions dictionary from 'dimensions/' folder
-dimensions = {}
-dimension_files = [f for f in os.listdir(DIMENSIONS_DIR) if os.path.isfile(os.path.join(DIMENSIONS_DIR, f))]
-for dimension in dimension_files:
-    with open(DIMENSIONS_DIR + dimension, 'r', encoding='UTF8') as f:
-        dimensions[dimension] = f.readlines()
-
-# Create a random entry in the dataset
-def random_row():
-    row = []
-    for i in options.COLUMNS:
-        row.append(random.choice(dimensions[i])[:-1])
-    return row
-
 def get_random_row(): 
     length = 10
     letters = string.ascii_lowercase 

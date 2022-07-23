@@ -1,5 +1,5 @@
-NUM_ROWS = 100
-noise_randomity = 10
+NUM_ROWS = 100000
+noise_randomity = 1000
 noise = 0
 DEFAULT_DIR = 'datasets/'
 FILENAME = DEFAULT_DIR + 'dataset_'+str(NUM_ROWS)+'_'+str(noise)+'_'+str(noise_randomity)+'.csv'
@@ -24,6 +24,6 @@ COLUMNS = [
 ]
 
 #--CHILD--
-NUM_ROWS_CHILD = 100
+NUM_ROWS_CHILD = 80000
 inherited_rows_percentage = 100
 CHILD_FILENAME = DEFAULT_DIR + 'child_dataset_'+str(NUM_ROWS)+'_'+str(NUM_ROWS_CHILD)+'_'+str(inherited_rows_percentage)+'.csv'

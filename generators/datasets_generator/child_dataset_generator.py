@@ -19,28 +19,22 @@ for dimension in dimension_files:
 
 # Create a random entry in the dataset
 def random_row():
-    with open(options.FILENAME, 'r', encoding='UTF8') as f:
-        list = f.readlines() 
-    flag = 1
-    while flag:
-        row = ''
-        j = 0 
-        for i in options.COLUMNS:
-            row += random.choice(dimensions[i])[:-1]
-            if j == 0 :
-                row += ','
-            j += 1
-        flag = row in list
-    return row.split(',')
+    row = []
+    for i in options.COLUMNS:
+        row.append(random.choice(dimensions[i])[:-1])
+    return row
 
-def get_parent_row():
-    with open(options.FILENAME, 'r', encoding='UTF8') as f:
+def get_random_row(): 
+    length = 10
+    letters = string.ascii_lowercase 
+    result_str_a = ''.join(random.choice(letters) for i in range(length)) 
+    result_str_b = ''.join(random.choice(letters) for i in range(length)) 
+    return [result_str_a, result_str_b]
+
+with open(options.FILENAME, 'r', encoding='UTF8') as f:
         list = f.readlines()
-    row = random.choice(list)[:-1]
-    while row == '':
-        row = random.choice(list)[:-1]
-    return row.split(',')
-        
+def get_parent_row():
+    return random.choice(list)[:-1].split(",")
 
 with open(options.CHILD_FILENAME, 'w', encoding='UTF8') as f:
     writer = csv.writer(f)
@@ -49,5 +43,5 @@ with open(options.CHILD_FILENAME, 'w', encoding='UTF8') as f:
     for i in range(inherited_rows):
         random_rows.append(get_parent_row())
     for i in range(options.NUM_ROWS_CHILD - inherited_rows):
-        random_rows.append(random_row())
+        random_rows.append(get_random_row())
     writer.writerows(random_rows)

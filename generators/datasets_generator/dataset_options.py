@@ -25,5 +25,5 @@ COLUMNS = [
 
 #--CHILD--
 NUM_ROWS_CHILD = 80000
-inherited_rows_percentage = 100
+inherited_rows_percentage = 50
 CHILD_FILENAME = DEFAULT_DIR + 'child_dataset_'+str(NUM_ROWS)+'_'+str(NUM_ROWS_CHILD)+'_'+str(inherited_rows_percentage)+'.csv'

@@ -1,3 +1,4 @@
+import csv
 import sys
 import os
 import pandas as pd
@@ -6,6 +7,7 @@ import json
 from datasketch import MinHashLSHEnsemble, MinHash
 import time
 import joinability_options as options
+import sys
 
 DEFAULT_DIR = "datasets/"
 DEFAULT_DIMENSIONS_DIR="dimensions/"
@@ -14,11 +16,14 @@ DEFAULT_ENTRY_FILE = DEFAULT_COD_DIR+"list_sources"
 NUM_PERM = 256
 NUM_PART = 32
 
-def main():
+def main(i):
 	# initialize. This is still hard-coded.
     s1 = DEFAULT_DIR + options.dataset1
 		
-    c1 = options.columns1
+    c1 = []
+
+    for col in range(i):
+        c1.append(col)
 
     m1 = MinHash(num_perm=NUM_PERM)
 
@@ -42,6 +47,10 @@ def main():
     hashing_time = end - start
 
     print("Hashing time:"+str(hashing_time))	
+
+    with open(options.OUTFILE, 'a', encoding='UTF8') as f:
+        f.write('\n'+str(hashing_time))
 			
 if __name__ == "__main__":
-    main()
+    for i in range(1,17):
+        main(i)

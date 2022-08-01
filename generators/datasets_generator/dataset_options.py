@@ -1,4 +1,4 @@
-NUM_ROWS = 100000
+NUM_ROWS = 1000000
 noise_randomity = 3
 noise = 0
 DEFAULT_DIR = 'datasets/'
@@ -22,7 +22,7 @@ COLUMNS = [
     "Time.day"
 ]
 
-FILENAME = DEFAULT_DIR + 'dataset_'+str(len(COLUMNS))+'_10.csv'
+FILENAME = DEFAULT_DIR + 'dataset_'+str(NUM_ROWS)+'_10.csv'
 
 #--CHILD--
 NUM_ROWS_CHILD = 80000
